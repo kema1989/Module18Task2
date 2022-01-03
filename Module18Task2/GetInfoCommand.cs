@@ -8,14 +8,22 @@ namespace Module18Task2
 {
     class GetInfoCommand : Command
     {
+        Receiver receiver;
+        YoutubeExplode.YoutubeClient youtubeClient;
+
+        public GetInfoCommand(Receiver receiver)
+        {
+            this.receiver = receiver;
+        }
+
         public override void Cancel()
         {
             throw new NotImplementedException();
         }
 
-        public override void Run()
+        public override void Run(string url)
         {
-            throw new NotImplementedException();
+            var info = youtubeClient.Videos.GetAsync(url);
         }
     }
 }
