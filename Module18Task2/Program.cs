@@ -9,7 +9,7 @@ namespace Module18Task2
         {
             var user = new User();
 
-            var downloader = new YoutubeDownloader("https://youtu.be/arAd1AEvlPQ");
+            var downloader = new YoutubeDownloader("https://youtu.be/OuFnpmGwg5k");
 
             var getInfoCommand = new GetInfoCommand(downloader);
 

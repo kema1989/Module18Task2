@@ -30,6 +30,7 @@ namespace Module18Task2
             Console.WriteLine($"Продолжительность: {videoInfo.Duration}");
             Console.WriteLine($"Канал: {videoInfo.Author}");
             Console.WriteLine($"Описание: {videoInfo.Description}");
+            Console.WriteLine("----------------------------------------------");
         }
 
         public async Task Download()
@@ -42,10 +43,16 @@ namespace Module18Task2
             Thread.Sleep(1000);
             Console.WriteLine("Bet");
 
-            Console.WriteLine("Введите название для скачиваемого видео");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("Введите название для скачиваемого видео:");
+            Console.ResetColor();
+
             string title = Console.ReadLine() + ".mp4";
+            //Скачивание
             await youtubeClient.Videos.DownloadAsync(videoUrl, title, builder => builder.SetPreset(ConversionPreset.UltraFast));
+            //Перемещение в папку Dowloads
             File.Move($@"C:\Users\YOGA\source\repos\Module18Task2\Module18Task2\bin\Debug\net5.0\{title}", $@"C:\Users\YOGA\Downloads\{title}");
+            
             Console.WriteLine("Скачивание прошло успешно");
         }
     }
