@@ -8,7 +8,6 @@ namespace Module18Task2
 {
     abstract class Command
     {
-        public abstract void Run();
-        public abstract void Cancel();
+        public abstract Task Run();
     }
 }

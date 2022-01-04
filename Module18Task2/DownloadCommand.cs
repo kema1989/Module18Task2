@@ -9,25 +9,15 @@ namespace Module18Task2
 {
     class DownloadCommand : Command
     {
-        Receiver receiver;
-        YoutubeClient client = new YoutubeClient();
-
-        string videoUrl;
-        string outputFilePath;
-
-        public DownloadCommand(string videoUrl, string outputFilePath)
+        YoutubeDownloader downloader;
+        public DownloadCommand(YoutubeDownloader downloader)
         {
-            this.videoUrl = videoUrl;
-            this.outputFilePath = outputFilePath;
-        }
-        public override void Cancel()
-        {
-            throw new NotImplementedException();
+            this.downloader = downloader;
         }
 
-        public override async void Run()
+        public override async Task Run()
         {
-            await client.Videos.ClosedCaptions.DownloadAsync()
+            await downloader.Download();
         }
     }
 }
